@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 
 import User from "../user";
 
 import "./listUsers.scss";
+import usersReducer from "../../reducers/usersReducer";
 
-const ListUsers = () => {
+const ListUsers = props => {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
@@ -15,6 +17,8 @@ const ListUsers = () => {
     };
     getUsers();
   }, []);
+
+  console.log(props);
 
   return (
     <section className="list__users">
@@ -33,4 +37,10 @@ const ListUsers = () => {
   );
 };
 
-export default ListUsers;
+const mapStateToProps = reducers => {
+  return reducers.usersReducer;
+};
+
+export default connect(mapStateToProps, {
+  /*Actions*/
+})(ListUsers);
