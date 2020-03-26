@@ -1,7 +1,16 @@
-import React from "react";
+import React, { Fragment } from "react";
+
+import ListUsers from "./components/listUsers";
+
+import "./app.scss";
 
 function App() {
-  return <div>App working</div>;
+  return (
+    <Fragment>
+      <div>App</div>
+      <ListUsers />
+    </Fragment>
+  );
 }
 
 export default App;
