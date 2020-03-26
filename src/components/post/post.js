@@ -5,9 +5,8 @@ import "./post.scss";
 const Post = props => {
   return (
     <section className="post">
-      <h4 className="name">{props.name}</h4>
-      <h6 className="username">{props.username}</h6>
-      <h6 className="email">{props.email}</h6>
+      <h4 className="title">{props.title}</h4>
+      <h6 className="body">{props.body}</h6>
     </section>
   );
 };
