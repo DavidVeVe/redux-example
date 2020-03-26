@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import User from "../user";
 
@@ -17,8 +17,8 @@ const ListUsers = () => {
   }, []);
 
   return (
-    <Fragment>
-      <div>List</div>
+    <section className="list__users">
+      <div>List of Users</div>
       {userData.map(user => {
         return (
           <User
@@ -29,7 +29,7 @@ const ListUsers = () => {
           />
         );
       })}
-    </Fragment>
+    </section>
   );
 };
 
