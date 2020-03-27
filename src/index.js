@@ -2,15 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 
 import reducers from "./reducers";
+import reduxThunk from "redux-thunk";
 
 //El primer parametro de createStore son todos los
 //reducers
 // El segundo parametro es el estado inicial
-const store = createStore(reducers, {});
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
   <React.StrictMode>

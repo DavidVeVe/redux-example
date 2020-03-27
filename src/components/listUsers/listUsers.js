@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+
+import * as usersActions from "../../actions/usersActions";
 
 import User from "../user";
 
@@ -7,23 +9,24 @@ import "./listUsers.scss";
 import usersReducer from "../../reducers/usersReducer";
 
 const ListUsers = props => {
-  const [userData, setUserData] = useState([]);
+  useEffect(
+    //   () => {
+    //   const getUsers = async () => {
+    //     const users = await fetch("https://jsonplaceholder.typicode.com/users");
+    //     const parsedUsers = await users.json();
+    //     setUserData(parsedUsers);
+    //   };
+    //   getUsers();
+    // }
 
-  useEffect(() => {
-    const getUsers = async () => {
-      const users = await fetch("https://jsonplaceholder.typicode.com/users");
-      const parsedUsers = await users.json();
-      setUserData(parsedUsers);
-    };
-    getUsers();
-  }, []);
-
-  console.log(props);
+    props.bringAll,
+    []
+  );
 
   return (
     <section className="list__users">
       <div>List of Users</div>
-      {userData.map(user => {
+      {props.users.map(user => {
         return (
           <User
             name={user.name}
@@ -41,6 +44,4 @@ const mapStateToProps = reducers => {
   return reducers.usersReducer;
 };
 
-export default connect(mapStateToProps, {
-  /*Actions*/
-})(ListUsers);
+export default connect(mapStateToProps, usersActions)(ListUsers);

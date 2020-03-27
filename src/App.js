@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Navbar from "./components/navbar";
 import ListUsers from "./components/listUsers";
@@ -9,11 +9,13 @@ import "./app.scss";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Navbar />
-      <Route path={"/users"} component={ListUsers} />
-      <Route path={"/posts"} component={Posts} />
-    </BrowserRouter>
+      <Switch>
+        <Route path={"/posts"} component={Posts} />
+        <Route path={"/"} component={ListUsers} />
+      </Switch>
+    </Router>
   );
 }
 
