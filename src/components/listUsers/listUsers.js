@@ -6,22 +6,14 @@ import * as usersActions from "../../actions/usersActions";
 import User from "../user";
 
 import "./listUsers.scss";
-import usersReducer from "../../reducers/usersReducer";
 
 const ListUsers = props => {
-  useEffect(
-    //   () => {
-    //   const getUsers = async () => {
-    //     const users = await fetch("https://jsonplaceholder.typicode.com/users");
-    //     const parsedUsers = await users.json();
-    //     setUserData(parsedUsers);
-    //   };
-    //   getUsers();
-    // }
-
-    props.bringAll,
-    []
-  );
+  useEffect(() => {
+    const fetchData = async () => {
+      return await props.bringAll();
+    };
+    fetchData();
+  }, []);
 
   return (
     <section className="list__users">

@@ -1,28 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+
+import * as postsActions from "../../actions/postsActions";
 
 import Post from "../post";
 
 import "./posts.scss";
 
-const Posts = () => {
-  const [postData, setPostData] = useState([]);
-
+const Posts = props => {
   useEffect(() => {
-    const getPosts = async () => {
-      const posts = await fetch("https://jsonplaceholder.typicode.com/posts");
-      const parsedPosts = await posts.json();
-      setPostData(parsedPosts);
+    const fetchPosts = async () => {
+      return await props.getPosts();
     };
-    getPosts();
+    fetchPosts();
   }, []);
+
+  console.log(props);
 
   return (
     <section className="posts">
-      {postData.map(post => {
+      {props.posts.map(post => {
         return <Post title={post.title} body={post.body} key={post.id} />;
       })}
     </section>
   );
 };
 
-export default Posts;
+const mapStateToProps = reducers => {
+  return reducers.postsReducer;
+};
+
+export default connect(mapStateToProps, postsActions)(Posts);

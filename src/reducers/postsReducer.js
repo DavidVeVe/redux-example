@@ -1,13 +1,13 @@
-import { BRING_USERS } from "../types/usersTypes";
+import { BRING_POSTS } from "../types/postsTypes";
 
 const INITIAL_STATE = {
-  users: []
+  posts: []
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case BRING_USERS:
-      return { ...state, users: action.payload };
+    case BRING_POSTS:
+      return { ...state, posts: action.payload };
     default:
       return state;
   }

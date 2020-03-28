@@ -1,6 +1,12 @@
-export const bringAll = () => async dispatch => {
-  const users = await fetch("https://jsonplaceholder.typicode.com/users");
-  const parsedUsers = await users.json();
+import { BRING_USERS } from "../types/usersTypes";
 
-  dispatch({ type: "bring_users", payload: await parsedUsers });
+export const bringAll = () => async dispatch => {
+  try {
+    const users = await fetch("https://jsonplaceholder.typicode.com/users");
+    const parsedUsers = await users.json();
+
+    dispatch({ type: BRING_USERS, payload: parsedUsers });
+  } catch (error) {
+    console.log(error.message);
+  }
 };
