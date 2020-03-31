@@ -1,6 +1,11 @@
 import { BRING_POSTS } from "../types/postsTypes";
+import { LOADING } from "../types/loadingType";
+import { ERROR } from "../types/errorType";
 
 export const getPosts = () => async dispatch => {
+  dispatch({
+    type: LOADING
+  });
   try {
     const posts = await fetch("https://jsonplaceholder.typicode.com/posts");
     const parsedPosts = await posts.json();
@@ -10,6 +15,6 @@ export const getPosts = () => async dispatch => {
       payload: parsedPosts
     });
   } catch (error) {
-    console.log(error.message);
+    dispatch({ type: ERROR, payload: error.message });
   }
 };

@@ -15,19 +15,24 @@ const ListUsers = props => {
     fetchData();
   }, []);
 
+  const printUsers = () => {
+    return props.users.map(user => {
+      return (
+        <User
+          name={user.name}
+          username={user.username}
+          email={user.email}
+          key={user.id}
+        />
+      );
+    });
+  };
+
   return (
     <section className="list__users">
       <div>List of Users</div>
-      {props.users.map(user => {
-        return (
-          <User
-            name={user.name}
-            username={user.username}
-            email={user.email}
-            key={user.id}
-          />
-        );
-      })}
+      {props.loading && <p>Loading data...</p>}
+      {printUsers()}
     </section>
   );
 };

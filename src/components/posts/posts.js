@@ -15,13 +15,17 @@ const Posts = props => {
     fetchPosts();
   }, []);
 
-  console.log(props);
+  const printPosts = () => {
+    return props.posts.map(post => {
+      return <Post title={post.title} body={post.body} key={post.id} />;
+    });
+  };
 
   return (
     <section className="posts">
-      {props.posts.map(post => {
-        return <Post title={post.title} body={post.body} key={post.id} />;
-      })}
+      <p>Posts</p>
+      {props.loading && <p>Loading data...</p>}
+      {printPosts()}
     </section>
   );
 };

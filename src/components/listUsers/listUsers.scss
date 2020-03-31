@@ -1,9 +1,10 @@
 .list__users {
-  width: 35%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: #d1d1d1;
+  padding: 1rem 0;
 }
 
 .list__users div {
